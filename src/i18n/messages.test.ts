@@ -76,11 +76,11 @@ describe("resolveLocale", () => {
     expect(resolveLocale("fr")).toBe("en");
   });
 
-  it("treats empty or missing ids as follow-system", () => {
+  it("treats empty or missing ids as Simplified Chinese", () => {
+    expect(resolveLocale("")).toBe("zh");
+    expect(resolveLocale(undefined)).toBe("zh");
+    expect(resolveLocale(null)).toBe("zh");
     const system = resolveLocalePreference("system");
-    expect(resolveLocale("")).toBe(system);
-    expect(resolveLocale(undefined)).toBe(system);
-    expect(resolveLocale(null)).toBe(system);
     expect(resolveLocale("system")).toBe(system);
   });
 });
@@ -138,10 +138,10 @@ describe("parseLocalePreference / resolveLocalePreference", () => {
     expect(parseLocalePreference("fr")).toBe("en");
   });
 
-  it("treats a missing preference as follow-system", () => {
-    expect(parseLocalePreference("")).toBe("system");
-    expect(parseLocalePreference(undefined)).toBe("system");
-    expect(parseLocalePreference(null)).toBe("system");
+  it("treats a missing preference as Simplified Chinese", () => {
+    expect(parseLocalePreference("")).toBe("zh");
+    expect(parseLocalePreference(undefined)).toBe("zh");
+    expect(parseLocalePreference(null)).toBe("zh");
   });
 
   it("resolves system preference via an explicit lang tag", () => {

@@ -16,8 +16,8 @@ export { isLocale, messages };
 /** User preference: explicit catalog locale or follow OS / browser language. */
 export type LocalePreference = "system" | Locale;
 
-/** Factory / missing-settings preference — follow the OS language. */
-export const DEFAULT_LOCALE_PREFERENCE: LocalePreference = "system";
+/** Factory / missing-settings preference — Simplified Chinese. */
+export const DEFAULT_LOCALE_PREFERENCE: LocalePreference = "zh";
 
 export type Vars = Record<string, string | number | undefined | null>;
 

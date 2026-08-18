@@ -123,7 +123,7 @@ export function GeneralSection() {
     keepTrayForSchedules,
     launchAtLogin,
     locale,
-    localePreference = "system",
+    localePreference = "zh",
     maxAgentTurns = 0,
     memoryBrowserEpoch,
     setMemoryBrowserEpoch,

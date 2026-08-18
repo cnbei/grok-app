@@ -200,7 +200,7 @@ pub struct AppSettings {
     pub theme: String,
     #[serde(default = "default_locale")]
     pub locale: String,
-    /// One-shot: factory locale `en` → `system` so first-run follows OS language.
+    /// One-shot: factory locale `en` → `system` (upstream migration).
     /// Missing field deserializes as false so existing installs migrate once.
     #[serde(default)]
     pub locale_follow_system_migrated: bool,
@@ -583,14 +583,14 @@ fn default_todo_gate_max_fires() -> u32 {
 }
 
 fn default_locale() -> String {
-    "system".into()
+    "zh".into()
 }
 
 impl Default for AppSettings {
     fn default() -> Self {
         Self {
             theme: "system".into(),
-            // Follow OS language (zh / zh-TW / en). Users can lock a catalog in Settings.
+            // Fork default: Simplified Chinese. Users can still pick system / en / zh-TW in Settings.
             locale: default_locale(),
             locale_follow_system_migrated: true,
             // Product default: share GROK_HOME (~/.grok) with terminal Grok Build CLI.
@@ -2924,7 +2924,7 @@ mod tests {
         assert_eq!(s.session_data_mode, "shared");
         assert_eq!(s.permission_policy, "ask");
         assert_eq!(s.theme, "system");
-        assert_eq!(s.locale, "system");
+        assert_eq!(s.locale, "zh");
         assert!(s.locale_follow_system_migrated);
         assert_eq!(s.max_concurrent_agents, 8);
         assert_eq!(s.agent_idle_minutes, 30);
